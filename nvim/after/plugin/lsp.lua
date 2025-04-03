@@ -42,7 +42,9 @@ lsp.set_preferences({
         warn = 'W',
         hint = 'H',
         info = 'I'
-    }
+    },
+    importModuleSpecifierPreference = 'relative', 
+    importModuleSpecifierEnding = 'minimal',
 })
 
 lsp.on_attach(function(client, bufnr)
@@ -62,13 +64,23 @@ end)
 
 lsp.format_on_save({
   servers = {
-    ['tsserver'] = {'typescript'},
+   -- ['tsserver'] = {'typescript'},
     ['lua_ls'] = {'lua'},
     ['rust_analyzer'] = {'rust'},
   }
 })
 
 lsp.setup()
+
+require('lspconfig').tsserver.setup({
+  init_options = { 
+    preferences = { 
+      -- other preferences... 
+      importModuleSpecifierPreference = 'relative', 
+      importModuleSpecifierEnding = 'minimal', 
+    },  
+  } 
+})
 
 vim.diagnostic.config({
   virtual_text = true,

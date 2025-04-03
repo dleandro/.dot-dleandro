@@ -8,14 +8,14 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
+		'nvim-telescope/telescope.nvim', tag = '0.1.4',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
 	use({ 'rose-pine/neovim',
 	as = 'rose-pine',
-	config = function() vim.cmd('colorscheme rose-pine')
+	config = function() vim.cmd('colorscheme rose-pine-moon')
 	end
 })
 
@@ -69,6 +69,15 @@ use {
         {"nvim-treesitter/nvim-treesitter"}
     }
 }
+
+use('jose-elias-alvarez/null-ls.nvim')
+use('MunifTanjim/prettier.nvim')
+
+use('terryma/vim-multiple-cursors')
+
+use('github/copilot.vim')
+
+use('git@gitlab.com:schrieveslaach/sonarlint.nvim')
 
 end)
 
